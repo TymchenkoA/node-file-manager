@@ -28,9 +28,9 @@ const handleUserCommand = (input) => {
     case "add":
       commands.create(args[0]);
       break;
-    // case "rn":
-    //   commands.rename(args[0], args[1]);
-    //   break;
+    case "rn":
+      commands.renameFile(args[0], args[1]);
+      break;
     case ".exit":
       console.log(
         `Thank you for using File Manager, ${user ? user : "Guest"}, goodbye!`
