@@ -2,6 +2,7 @@ import { homedir } from "node:os";
 import { getUserInput } from "./controller.js";
 import { goUp } from "./commands/nav/up.js";
 import { changeDir } from "./commands/nav/cd.js";
+import { read } from "./commands/fs/read.js";
 import { getFilesList } from "./commands/fs/ls.js";
 import { getCurrentDir } from "./utils/getCurrentDir.js";
 
@@ -21,6 +22,9 @@ const handleUserCommand = (input) => {
       break;
     case "ls":
       getFilesList();
+      break;
+    case "cat":
+      read(args[0]);
       break;
     default:
       console.log("Unknown command");
