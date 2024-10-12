@@ -9,28 +9,36 @@ process.chdir(homedir());
 
 const handleUserCommand = (input) => {
   const [command, ...args] = input.split(" ");
-  // console.log(command);
-  // console.log(args);
 
   switch (command) {
     case "up":
       commands.goUp();
       break;
+
     case "cd":
       commands.changeDir(args[0]);
       break;
+
     case "ls":
       commands.getFilesList();
       break;
+
     case "cat":
       commands.read(args[0]);
       break;
+
     case "add":
       commands.create(args[0]);
       break;
+
     case "rn":
       commands.renameFile(args[0], args[1]);
       break;
+
+    case "rm":
+      commands.remove(args[0]);
+      break;
+
     case ".exit":
       console.log(
         `Thank you for using File Manager, ${user ? user : "Guest"}, goodbye!`
@@ -38,6 +46,7 @@ const handleUserCommand = (input) => {
       closeInterface();
       process.exit(0);
       break;
+
     default:
       console.log("Invalid input");
   }
@@ -45,6 +54,7 @@ const handleUserCommand = (input) => {
 
 const setupSIGINTHandler = () => {
   process.stdin.on("data", (data) => {
+    
     //Checking if user presses Ctrl+C
     if (data.toString() === "\u0003") {
       console.log(

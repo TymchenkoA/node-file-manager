@@ -3,8 +3,8 @@ import { changeDir } from "./nav/cd.js";
 import { read } from "./fs/read.js";
 import { create } from "./fs/create.js";
 import { renameFile } from "./fs/rename.js";
+import { remove } from "./fs/delete.js";
 import { getFilesList } from "./fs/ls.js";
-
 
 export default {
     goUp,
@@ -12,5 +12,6 @@ export default {
     read,
     create,
     renameFile,
-    getFilesList
+    getFilesList,
+    remove
 };
