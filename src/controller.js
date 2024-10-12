@@ -5,10 +5,22 @@ const rl = readlinePromises.createInterface({
   output: process.stdout,
 }); 
 
-export const getUserInput = () => {
-    return new Promise ((resolve) => {
-        rl.on('line', (input) => {
-            resolve(input);
-          }); 
-    });
+
+//Causes MaxListenersExceededWarning
+
+// export const getUserInput = () => {
+//     return new Promise ((resolve) => {
+//         rl.on('line', (input) => {
+//             resolve(input);
+//           }); 
+//     });
+// };
+
+export const getUserInput = async() => {
+  const input = await rl.question('');
+  return input;
+};
+
+export const closeInterface = () => {
+  rl.close();
 };

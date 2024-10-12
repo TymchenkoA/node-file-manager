@@ -1,11 +1,9 @@
 import { homedir } from "node:os";
-import { getUserInput } from "./controller.js";
-import { goUp } from "./commands/nav/up.js";
-import { changeDir } from "./commands/nav/cd.js";
-import { read } from "./commands/fs/read.js";
-import { create } from "./commands/fs/create.js";
-import { getFilesList } from "./commands/fs/ls.js";
+import { getUserInput, closeInterface } from "./controller.js";
+import commands from "./commands/index.js";
 import { getCurrentDir } from "./utils/getCurrentDir.js";
+
+let user = "";
 
 process.chdir(homedir());
 
@@ -16,28 +14,50 @@ const handleUserCommand = (input) => {
 
   switch (command) {
     case "up":
-      goUp();
+      commands.goUp();
       break;
     case "cd":
-      changeDir(args[0]);
+      commands.changeDir(args[0]);
       break;
     case "ls":
-      getFilesList();
+      commands.getFilesList();
       break;
     case "cat":
-      read(args[0]);
+      commands.read(args[0]);
       break;
     case "add":
-      create(args[0]);
+      commands.create(args[0]);
+      break;
+    // case "rn":
+    //   commands.rename(args[0], args[1]);
+    //   break;
+    case ".exit":
+      console.log(
+        `Thank you for using File Manager, ${user ? user : "Guest"}, goodbye!`
+      );
+      closeInterface();
+      process.exit(0);
       break;
     default:
       console.log("Invalid input");
   }
 };
 
+const setupSIGINTHandler = () => {
+  process.stdin.on("data", (data) => {
+    //Checking if user presses Ctrl+C
+    if (data.toString() === "\u0003") {
+      console.log(
+        `Thank you for using File Manager, ${user ? user : "Guest"}, goodbye!`
+      );
+      closeInterface();
+      process.exit(0);
+    }
+  });
+};
+
 const runApp = async () => {
   const shell = process.env.SHELL || process.env.ComSpec || "unknown shell";
-  let user = "";
 
   if (!shell.includes("bash")) {
     user = process.env.npm_config_username;
@@ -60,6 +80,8 @@ const runApp = async () => {
   }
 
   getCurrentDir();
+
+  setupSIGINTHandler();
 
   try {
     while (true) {
