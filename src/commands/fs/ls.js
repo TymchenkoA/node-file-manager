@@ -1,5 +1,6 @@
 import { readdir, stat } from "node:fs/promises";
 import path from "path";
+import { getCurrentDir } from "../../utils/getCurrentDir.js";
 
 export const getFilesList = async () => {
   try {
@@ -32,6 +33,7 @@ export const getFilesList = async () => {
     );
 
     console.table([...dirsList, ...filesList]);
+    getCurrentDir();
     
   } catch (err) {
     console.error("Operation failed");

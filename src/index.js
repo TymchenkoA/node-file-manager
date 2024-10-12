@@ -3,6 +3,7 @@ import { getUserInput } from "./controller.js";
 import { goUp } from "./commands/nav/up.js";
 import { changeDir } from "./commands/nav/cd.js";
 import { read } from "./commands/fs/read.js";
+import { create } from "./commands/fs/create.js";
 import { getFilesList } from "./commands/fs/ls.js";
 import { getCurrentDir } from "./utils/getCurrentDir.js";
 
@@ -26,8 +27,11 @@ const handleUserCommand = (input) => {
     case "cat":
       read(args[0]);
       break;
+    case "add":
+      create(args[0]);
+      break;
     default:
-      console.log("Unknown command");
+      console.log("Invalid input");
   }
 };
 
