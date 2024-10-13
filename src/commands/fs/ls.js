@@ -19,8 +19,8 @@ export const getFilesList = async () => {
           if (stats.isDirectory()) {
             dirsList.push({
               Name: file,
-              Type: 'directory'
-            })
+              Type: "directory",
+            });
           }
 
           if (stats.isFile()) {
@@ -33,9 +33,9 @@ export const getFilesList = async () => {
     );
 
     console.table([...dirsList, ...filesList]);
-    getCurrentDir();
-    
   } catch (err) {
     console.error("Operation failed");
   }
+
+  getCurrentDir();
 };

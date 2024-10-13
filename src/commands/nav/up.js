@@ -1,11 +1,11 @@
-import { getCurrentDir } from '../../utils/getCurrentDir.js';
+import { getCurrentDir } from "../../utils/getCurrentDir.js";
 
-export const goUp = async() => {
-    try {
-        process.chdir('..');
-        getCurrentDir();
-    
-      } catch (err) {
-        console.error('Operation failed');
-      }
+export const goUp = async () => {
+  try {
+    process.chdir("..");
+  } catch (err) {
+    console.error("Operation failed");
+  }
+
+  getCurrentDir();
 };

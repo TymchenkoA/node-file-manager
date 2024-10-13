@@ -6,8 +6,9 @@ export const create = async (file) => {
   try {
     const filePath = path.resolve(process.cwd(), file);
     await writeFile(filePath, "");
-    getCurrentDir();
   } catch (err) {
     console.error("Operation failed");
   }
+
+  getCurrentDir();
 };

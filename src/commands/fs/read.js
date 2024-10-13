@@ -20,5 +20,6 @@ export const read = async (rawPath) => {
 
   readStream.on("error", (err) => {
     console.error("Operation failed");
+    getCurrentDir();
   });
 };

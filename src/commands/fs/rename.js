@@ -8,9 +8,10 @@ export const renameFile = async (oldName, newName) => {
     const newFilePath = path.resolve(process.cwd(), newName);
 
     await rename(oldFilePath, newFilePath);
-    getCurrentDir();
-    
+    // getCurrentDir();
+
   } catch (err) {
     console.error("Operation failed");
   }
+  getCurrentDir();
 };

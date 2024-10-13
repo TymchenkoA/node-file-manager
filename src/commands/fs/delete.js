@@ -6,9 +6,9 @@ export const remove = async (file) => {
   try {
     const filePath = path.resolve(process.cwd(), file);
     await unlink(filePath);
-    getCurrentDir();
-    
   } catch (err) {
     console.error("Operation failed");
   }
+
+  getCurrentDir();
 };
