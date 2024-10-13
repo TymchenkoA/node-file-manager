@@ -47,6 +47,10 @@ const handleUserCommand = (input) => {
       commands.getOSInfo(args[0]);
       break;
 
+    case "hash":
+      commands.calculateHash(args[0]);
+      break;
+
     case ".exit":
       console.log(
         `Thank you for using File Manager, ${user ? user : "Guest"}, goodbye!`

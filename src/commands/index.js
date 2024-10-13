@@ -6,7 +6,8 @@ import { renameFile } from "./fs/rename.js";
 import { remove } from "./fs/delete.js";
 import { copy } from "./fs/copy.js";
 import { getFilesList } from "./fs/ls.js";
-import { getOSInfo } from "./os/index.js";
+import { getOSInfo } from "./os/osInfo.js";
+import { calculateHash } from "./hash/calcHash.js";
 
 export default {
     goUp,
@@ -17,5 +18,6 @@ export default {
     getFilesList,
     remove,
     copy,
-    getOSInfo
+    getOSInfo,
+    calculateHash
 };
