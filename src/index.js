@@ -55,6 +55,10 @@ const handleUserCommand = (input) => {
       commands.compress(args[0], args[1]);
       break;
 
+    case "decompress":
+      commands.decompress(args[0], args[1]);
+      break;
+
     case ".exit":
       console.log(
         `Thank you for using File Manager, ${user ? user : "Guest"}, goodbye!`
