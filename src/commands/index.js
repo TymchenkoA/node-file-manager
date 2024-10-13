@@ -4,7 +4,9 @@ import { read } from "./fs/read.js";
 import { create } from "./fs/create.js";
 import { renameFile } from "./fs/rename.js";
 import { remove } from "./fs/delete.js";
+import { copy } from "./fs/copy.js";
 import { getFilesList } from "./fs/ls.js";
+import { getOSInfo } from "./os/index.js";
 
 export default {
     goUp,
@@ -13,5 +15,7 @@ export default {
     create,
     renameFile,
     getFilesList,
-    remove
+    remove,
+    copy,
+    getOSInfo
 };

@@ -39,6 +39,14 @@ const handleUserCommand = (input) => {
       commands.remove(args[0]);
       break;
 
+    case "cp":
+      commands.copy(args[0], args[1]);
+      break;
+
+    case "os":
+      commands.getOSInfo(args[0]);
+      break;
+
     case ".exit":
       console.log(
         `Thank you for using File Manager, ${user ? user : "Guest"}, goodbye!`
@@ -54,7 +62,6 @@ const handleUserCommand = (input) => {
 
 const setupSIGINTHandler = () => {
   process.stdin.on("data", (data) => {
-    
     //Checking if user presses Ctrl+C
     if (data.toString() === "\u0003") {
       console.log(
