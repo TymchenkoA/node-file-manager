@@ -51,6 +51,10 @@ const handleUserCommand = (input) => {
       commands.calculateHash(args[0]);
       break;
 
+    case "compress":
+      commands.compress(args[0], args[1]);
+      break;
+
     case ".exit":
       console.log(
         `Thank you for using File Manager, ${user ? user : "Guest"}, goodbye!`
@@ -61,6 +65,7 @@ const handleUserCommand = (input) => {
 
     default:
       console.log("Invalid input");
+      getCurrentDir();
   }
 };
 

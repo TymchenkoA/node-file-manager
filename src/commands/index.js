@@ -8,6 +8,7 @@ import { copy } from "./fs/copy.js";
 import { getFilesList } from "./fs/ls.js";
 import { getOSInfo } from "./os/osInfo.js";
 import { calculateHash } from "./hash/calcHash.js";
+import { compress } from "./zip/compress.js";
 
 export default {
     goUp,
@@ -19,5 +20,6 @@ export default {
     remove,
     copy,
     getOSInfo,
-    calculateHash
+    calculateHash,
+    compress
 };
