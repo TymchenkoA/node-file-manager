@@ -10,7 +10,6 @@ export const getFilesList = async () => {
 
     await Promise.all(
       filesAndDirs
-        .sort((a, b) => a.localeCompare(b))
         .map(async (file) => {
           const fullPath = path.join(process.cwd(), file);
 
@@ -32,7 +31,10 @@ export const getFilesList = async () => {
         })
     );
 
-    console.table([...dirsList, ...filesList]);
+    const sortedDirs = dirsList.sort((a, b) => a.Name.localeCompare(b.Name));
+    const sortedFiles = filesList.sort((a, b) => a.Name.localeCompare(b.Name));
+
+    console.table([...sortedDirs, ...sortedFiles]);
   } catch (err) {
     console.error("Operation failed");
   }
