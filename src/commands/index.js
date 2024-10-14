@@ -5,6 +5,7 @@ import { create } from "./fs/create.js";
 import { renameFile } from "./fs/rename.js";
 import { remove } from "./fs/delete.js";
 import { copy } from "./fs/copy.js";
+import { move } from "./fs/move.js";
 import { getFilesList } from "./fs/ls.js";
 import { getOSInfo } from "./os/osInfo.js";
 import { calculateHash } from "./hash/calcHash.js";
@@ -20,6 +21,7 @@ export default {
     getFilesList,
     remove,
     copy,
+    move,
     getOSInfo,
     calculateHash,
     compress,

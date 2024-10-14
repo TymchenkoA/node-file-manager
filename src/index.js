@@ -43,6 +43,10 @@ const handleUserCommand = (input) => {
       commands.copy(args[0], args[1]);
       break;
 
+    case "mv":
+      commands.move(args[0], args[1]);
+      break;
+
     case "os":
       commands.getOSInfo(args[0]);
       break;
